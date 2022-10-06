@@ -171,19 +171,6 @@ public final class RotationMatrix {
 		return RotationMatrix.genericTranspose.apply(ebFrame).getData();
 	}
 
-//	/**
-//	 * Transformation to aircraft body frame from NED frame.
-//	 * 
-//	 * @param beFrame A 3 by 3 array of the aircraft body frame typically obtained
-//	 *                from {@link RotationMatrix#TBE(double[][])}.
-//	 * @param enFrame A 3 by 3 array of the ECEF frame typically obtained from
-//	 *                {@link RotationMatrix#TEN(double, double)}.
-//	 * @return A 3 by 3 array of the transformed frame.
-//	 */
-//	public static double[][] TBN(double[][] beFrame, double[][] enFrame) {
-//		return RotationMatrix.genericRotation.apply(beFrame, enFrame).getData();
-//	}
-
 	/**
 	 * Transformation to aircraft body frame from NED frame.
 	 * 
