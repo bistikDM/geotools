@@ -95,7 +95,7 @@ public final class MeasurementModel {
 		double[] aRelative = aFrame.getColumn(1);
 		double magnitude = FastMath.sqrt(
 				FastMath.pow(aRelative[0], 2.0d) + FastMath.pow(aRelative[1], 2.0d) + FastMath.pow(aRelative[2], 2.0d));
-		double[] result = aFrame.scalarMultiply(1.0d * magnitude)
+		double[] result = aFrame.scalarMultiply(1.0d / magnitude)
 				.getColumn(1);
 
 		return AntennaArray.builder()
