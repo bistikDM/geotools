@@ -75,7 +75,8 @@ public final class RotationMatrix {
 		RealMatrix rz = RotationMatrix.rz.apply(longitude);
 		RealMatrix ry = RotationMatrix.ry.apply(lat);
 
-		return rz.multiply(ry).getData();
+		return rz.multiply(ry)
+				.getData();
 	}
 
 	/**
@@ -91,7 +92,9 @@ public final class RotationMatrix {
 		RealMatrix ry = RotationMatrix.ry.apply(pitch);
 		RealMatrix rz = RotationMatrix.rz.apply(yaw);
 
-		return rz.multiply(ry).multiply(rx).getData();
+		return rz.multiply(ry)
+				.multiply(rx)
+				.getData();
 	}
 
 	/**
@@ -107,7 +110,9 @@ public final class RotationMatrix {
 		RealMatrix ry = RotationMatrix.ry.apply(beta);
 		RealMatrix rz = RotationMatrix.rz.apply(alpha);
 
-		return rz.multiply(ry).multiply(rx).getData();
+		return rz.multiply(ry)
+				.multiply(rx)
+				.getData();
 	}
 
 	/**
@@ -120,7 +125,8 @@ public final class RotationMatrix {
 	 * @return A 3 by 3 array of the transformed frame.
 	 */
 	public static double[][] TEB(double[][] enFrame, double[][] nbFrame) {
-		return RotationMatrix.genericRotation.apply(enFrame, nbFrame).getData();
+		return RotationMatrix.genericRotation.apply(enFrame, nbFrame)
+				.getData();
 	}
 
 	/**
@@ -133,7 +139,8 @@ public final class RotationMatrix {
 	 * @return A 3 by 3 array of the transformed frame.
 	 */
 	public static double[][] TEA(double[][] ebFrame, double[][] baFrame) {
-		return RotationMatrix.genericRotation.apply(ebFrame, baFrame).getData();
+		return RotationMatrix.genericRotation.apply(ebFrame, baFrame)
+				.getData();
 	}
 
 	/**
@@ -144,7 +151,8 @@ public final class RotationMatrix {
 	 * @return A 3 by 3 array of the transformed frame.
 	 */
 	public static double[][] TNE(double[][] enFrame) {
-		return RotationMatrix.genericTranspose.apply(enFrame).getData();
+		return RotationMatrix.genericTranspose.apply(enFrame)
+				.getData();
 	}
 
 	/**
@@ -157,7 +165,8 @@ public final class RotationMatrix {
 	 * @return A 3 by 3 array of the transformed frame.
 	 */
 	public static double[][] TNA(double[][] nbFrame, double[][] baFrame) {
-		return RotationMatrix.genericRotation.apply(nbFrame, baFrame).getData();
+		return RotationMatrix.genericRotation.apply(nbFrame, baFrame)
+				.getData();
 	}
 
 	/**
@@ -168,7 +177,8 @@ public final class RotationMatrix {
 	 * @return A 3 by 3 array of the transformed frame.
 	 */
 	public static double[][] TBE(double[][] ebFrame) {
-		return RotationMatrix.genericTranspose.apply(ebFrame).getData();
+		return RotationMatrix.genericTranspose.apply(ebFrame)
+				.getData();
 	}
 
 	/**
@@ -179,7 +189,8 @@ public final class RotationMatrix {
 	 * @return A 3 by 3 array of the transformed frame.
 	 */
 	public static double[][] TBN(double[][] nbFrame) {
-		return RotationMatrix.genericTranspose.apply(nbFrame).getData();
+		return RotationMatrix.genericTranspose.apply(nbFrame)
+				.getData();
 	}
 
 	/**
@@ -190,7 +201,8 @@ public final class RotationMatrix {
 	 * @return A 3 by 3 array of the transformed frame.
 	 */
 	public static double[][] TAE(double[][] eaFrame) {
-		return RotationMatrix.genericTranspose.apply(eaFrame).getData();
+		return RotationMatrix.genericTranspose.apply(eaFrame)
+				.getData();
 	}
 
 	/**
@@ -201,7 +213,8 @@ public final class RotationMatrix {
 	 * @return A 3 by 3 array of the transformed frame.
 	 */
 	public static double[][] TAN(double[][] naFrame) {
-		return RotationMatrix.genericTranspose.apply(naFrame).getData();
+		return RotationMatrix.genericTranspose.apply(naFrame)
+				.getData();
 	}
 
 	/**
@@ -212,7 +225,8 @@ public final class RotationMatrix {
 	 * @return A 3 by 3 array of the transformed frame.
 	 */
 	public static double[][] TAB(double[][] baFrame) {
-		return RotationMatrix.genericTranspose.apply(baFrame).getData();
+		return RotationMatrix.genericTranspose.apply(baFrame)
+				.getData();
 	}
 
 	private static boolean isNotEmptyOrNull(double[][] arr) {
