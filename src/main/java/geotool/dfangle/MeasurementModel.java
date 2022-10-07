@@ -77,7 +77,8 @@ public final class MeasurementModel {
 	 * @param relativePos   The relative position of the target to the origin.
 	 * @return A unit vector along the LOS in frame A.
 	 */
-	public static AntennaArray getLOS(LLA originPos, Body originBody, AntennaArray originAntenna, ECEF relativePos) {
+	public static AntennaArray getLOS(@NonNull LLA originPos, @NonNull Body originBody,
+			@NonNull AntennaArray originAntenna, @NonNull ECEF relativePos) {
 		RealMatrix relative = MatrixUtils
 				.createColumnRealMatrix(new double[] { relativePos.getX(), relativePos.getY(), relativePos.getZ() });
 
@@ -112,7 +113,7 @@ public final class MeasurementModel {
 	 *         {@code array} is aligned with the body frame, a positive azimuth
 	 *         indicates that the target is to the right of origin.
 	 */
-	public static double getAzimuth(AntennaArray array) {
+	public static double getAzimuth(@NonNull AntennaArray array) {
 		return FastMath.atan((array.getBeta() / array.getAlpha()));
 	}
 
@@ -124,7 +125,7 @@ public final class MeasurementModel {
 	 *         {@code array} is aligned with the body frame, a positive elevation
 	 *         indicates that the target is above the origin.
 	 */
-	public static double getElevation(AntennaArray array) {
+	public static double getElevation(@NonNull AntennaArray array) {
 		return FastMath.atan(-array.getGamma()
 				/ (FastMath.sqrt(FastMath.pow(array.getAlpha(), 2.0d) + FastMath.pow(array.getBeta(), 2.0d))));
 	}
