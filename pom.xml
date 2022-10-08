@@ -4,6 +4,9 @@
 	<artifactId>geotool</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Geotool</name>
+	<properties>
+		<maven.compiler.release>17</maven.compiler.release>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.hipparchus</groupId>

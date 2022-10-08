@@ -21,10 +21,11 @@ import lombok.NonNull;
  *         Using Direction Finding Angles</a>
  */
 public final class MeasurementModel {
-	private static final double EARTH_ECCENTRICITY_SQUARED = FastMath.pow(0.01671d, 2.0d);
-	private static final double EARTH_RADIUS_METER = 6.371e6d;
 
-	private static Function<Double, Double> transverseRadius = (latitude) -> {
+	static final double EARTH_ECCENTRICITY_SQUARED = FastMath.pow(0.01671d, 2.0d);
+	static final double EARTH_RADIUS_METER = 6.371e6d;
+
+	static Function<Double, Double> transverseRadius = (latitude) -> {
 		double sinLat = FastMath.sin(latitude);
 		double denom = FastMath.sqrt(1.0d - MeasurementModel.EARTH_ECCENTRICITY_SQUARED * FastMath.pow(sinLat, 2.0d));
 
@@ -108,30 +109,37 @@ public final class MeasurementModel {
 	/**
 	 * Calculates the DF angle azimuth in radian.
 	 * 
-	 * @param array The antenna array to calculate the DF angle.
+	 * @param arrayLos The antenna array LOS to calculate the DF angle.
 	 * @return A radian value such that if the antenna frame used to calculate the
 	 *         {@code array} is aligned with the body frame, a positive azimuth
 	 *         indicates that the target is to the right of origin.
 	 */
-	public static double getAzimuth(@NonNull AntennaArray array) {
-		return FastMath.atan((array.getBeta() / array.getAlpha()));
+	public static double getAzimuth(@NonNull AntennaArray arrayLos) {
+		return FastMath.atan((arrayLos.getBeta() / arrayLos.getAlpha()));
 	}
 
 	/**
 	 * Calculates the elevation in m.
 	 * 
-	 * @param array The antenna array to calculate the elevation.
+	 * @param arrayLos The antenna array LOS to calculate the elevation.
 	 * @return A meter value such that if the antenna frame used to calculate the
 	 *         {@code array} is aligned with the body frame, a positive elevation
 	 *         indicates that the target is above the origin.
 	 */
-	public static double getElevation(@NonNull AntennaArray array) {
-		return FastMath.atan(-array.getGamma()
-				/ (FastMath.sqrt(FastMath.pow(array.getAlpha(), 2.0d) + FastMath.pow(array.getBeta(), 2.0d))));
+	public static double getElevation(@NonNull AntennaArray arrayLos) {
+		return FastMath.atan(-arrayLos.getGamma()
+				/ (FastMath.sqrt(FastMath.pow(arrayLos.getAlpha(), 2.0d) + FastMath.pow(arrayLos.getBeta(), 2.0d))));
 	}
 
-	public static double getAOA(AntennaArray array) {
-		return FastMath.atan(FastMath.sqrt(FastMath.pow(array.getBeta(), 2.0d) + FastMath.pow(array.getGamma(), 2.0d))
-				/ array.getAlpha());
+	/**
+	 * Calculates the AOA
+	 * 
+	 * @param arrayLos The antenna array LOS to calculate the AOA.
+	 * @return The calculated AOA value.
+	 */
+	public static double getAOA(AntennaArray arrayLos) {
+		return FastMath
+				.atan(FastMath.sqrt(FastMath.pow(arrayLos.getBeta(), 2.0d) + FastMath.pow(arrayLos.getGamma(), 2.0d))
+						/ arrayLos.getAlpha());
 	}
 }
